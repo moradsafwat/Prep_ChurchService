@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AvaMina.ViewModels.ServantPeopleViewModel>
+@{
+    ViewData["Title"] = "Servant";
+}
+
+<div class="container">
+    <div>
+        @foreach (var i in Model)
+        {
+            <h1>Servant Name @Html.DisplayFor(modelItem => i.FullName)</h1>
+            <i>
+                @Html.DisplayFor(modelItem => i.FirstName)
+                @Html.DisplayFor(modelItem => i.FirstName)
+            </i>
+        }
+    </div>
+</div>

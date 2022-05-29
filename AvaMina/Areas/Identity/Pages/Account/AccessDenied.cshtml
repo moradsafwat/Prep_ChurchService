@@ -1,0 +1,30 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <header>
+            <h1 class="text-danger">@ViewData["Title"]</h1>
+            <p class="text-danger">You do not have access to this resource.</p>
+        </header>
+        <div class="carousel-inner" role="listbox">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <div class="carousel-content animate__animated animate__fadeInUp">
+                        <h2 class="text-center">Welcome to <span>Ava Mina </span> Site</h2>
+                        <p>Sorry ...</p>
+                        <p>You do not have access to this resource.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Hero -->

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AvaMina.Models.Lesson>
+
+@{
+    ViewData["Title"] = "Lessons";
+    int i = 1;
+}
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Lessons</strong></h2>
+        </div>
+        <div class="m-3" data-aos="fade-up">
+            <a asp-controller="Lesson" asp-action="CreateLesson" class="btn btn-outline-success">New Lesson</a>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item">
+                    <table class="table table-striped text-center" style="direction:rtl">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    الرقم
+                                </th>
+                                <th scope="col">
+                                    تاريخ الدرس
+                                </th>
+                                <th scope="col">
+                                    الدرس
+                                </th>
+                                <th scope="col">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @(i++)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("DetailsLesson","Lesson",new{ id = item.Id })'>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MenuExampleDefault" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+                                            <span>
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </span>
+                                        </button>
+                                        <div class="collapse navbar-collapse" id="MenuExampleDefault">
+                                            <a href='@Url.Action("EditLesson","Lesson",new{ id = item.Id })'><i class="bi bi-pencil-square"></i></a>
+                                            <a href='@Url.Action("RemoveLesson","Lesson",new{ id = item.Id })'><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

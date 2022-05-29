@@ -1,0 +1,42 @@
+﻿@model AvaMina.Models.Event
+
+@{
+    ViewData["Title"] = "Remove Event ";
+}
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Delete Person</strong></h2>
+            <h3>Are you sure you want to delete this Event ?</h3>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <div class="card" style="direction:rtl;text-align:right">
+                        <h3 class="card-header text-center">
+                            @Model.Type
+                        </h3>
+                        <div class="card-body">
+                            <h4 class="card-title">نوع الاجتماع </h4>
+                            <p class="card-text fs-4">
+                                @Model.Type
+                            </p>
+                            <h4 class="card-title">التاريخ </h4>
+                            <p class="card-text fs-4">@Model.Date</p>
+                        </div>
+                        <div class="card-footer mt-2">
+                            <form asp-controller="Event" asp-action="DeleteEvent" method="post">
+                                <a asp-controller="Event" asp-action="EventAttendance" class="btn btn-outline-success">Back to Attendance</a>
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

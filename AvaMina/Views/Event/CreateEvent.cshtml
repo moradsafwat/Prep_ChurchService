@@ -1,0 +1,41 @@
+﻿@using AvaMina.Models
+@model Event
+
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Create Event</strong></h2>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <form asp-controller="Event" asp-action="CreateEvent" method="post">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Date" class="control-label">التاريخ </label>
+                                <input asp-for="Date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Type" class="control-label">نوع الاجتماع </label>
+                                <input asp-for="Type" class="form-control" />
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @*<a asp-controller="People" asp-action="People" class="btn btn-outline-info">Back to List</a>*@
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

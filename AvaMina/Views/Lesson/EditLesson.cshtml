@@ -1,0 +1,72 @@
+﻿@model AvaMina.Models.Lesson
+
+@{
+    ViewData["Title"] = "EditLesson";
+}
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Edit Lesson</strong></h2>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <div class="col-md-6" style="direction:rtl;text-align:right">
+                        <form asp-controller="Lesson" asp-action="EditLesson" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Date" class="control-label">تاريخ الدرس</label>
+                                <input asp-for="Date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label">أسم الدرس</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Target" class="control-label">الهدف</label>
+                                <input asp-for="Target" class="form-control" />
+                                <span asp-validation-for="Target" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Elements" class="control-label">العناصر</label>
+                                <input asp-for="Elements" class="form-control" />
+                                <span asp-validation-for="Elements" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Verse" class="control-label">الاية</label>
+                                <input asp-for="Verse" class="form-control" />
+                                <span asp-validation-for="Verse" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="reference" class="control-label">المرجع</label>
+                                <input asp-for="reference" class="form-control" />
+                                <span asp-validation-for="reference" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="training1" class="control-label">التدريب 1</label>
+                                <input asp-for="training1" class="form-control" />
+                                <span asp-validation-for="training1" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="training2" class="control-label">التدريب 2</label>
+                                <input asp-for="training2" class="form-control" />
+                                <span asp-validation-for="training2" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <a asp-controller="Lesson" asp-action="Lessons" class="btn btn-outline-success">Back to List</a>
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

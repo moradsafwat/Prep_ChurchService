@@ -1,0 +1,16 @@
+﻿@page
+@using AvaMina.ViewModels;
+@model RoleFormViewModel
+
+
+    <form asp-action="AddRole" method="post">
+        <div class="form-group mb-3">
+            <input asp-for="Name" class="form-group" placeholder="Role Name ..." />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">
+                    Add New Role
+                </button>
+            </div>
+            <span asp-Validation-for="Name" class="text-danger"></span>
+        </div>
+    </form>

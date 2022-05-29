@@ -1,0 +1,39 @@
+﻿@model AvaMina.Models.Post
+
+@{
+    ViewData["Title"] = "EditPost";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Edit Post</strong></h2>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <form asp-controller="Post" asp-action="EditPost" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group text-right col-md-4">
+                            <label asp-for="Title" class="control-label">العنوان</label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-10">
+                            <label asp-for="Content" class="control-label"> الموضوع</label>
+                            <textarea asp-for="Content" class="form-control" rows="7"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <a asp-controller="Post" asp-action="Posts" class="btn btn btn-outline-success">Back to List</a>
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

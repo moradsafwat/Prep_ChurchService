@@ -1,0 +1,43 @@
+﻿@using AvaMina.Models
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Ava Mina Prep";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2>St.<strong>Mary Church</strong></h2>
+            <p>
+                "If anyone serves me, let him follow me, and where I am, there also my servant will be. And if anyone serves me, the Father will honor him."
+            </p>
+            <p>( John 12:26 )</p>
+        </div>
+        <div data-aos="fade-up">
+            <a asp-controller="Post" asp-action="CreatePost" class="btn btn-outline-success m-3">New Post</a>
+        </div>
+        <div class="row">
+                <div class="member" data-aos="fade-up">
+                    <div class="item">
+                        @foreach (var item in Model@*.Reverse()*@)
+{
+                        <h2>
+                            <span class="badge badge-pill badge-secondary text-left" style="font-size:40%;">@Html.DisplayFor(modelItem => item.CreateDate)</span>
+                            @Html.DisplayFor(modelItem => item.Title)
+                            <img style="height:50px;width:50px" src="~/img/01.png" class="rounded-circle">
+                        </h2>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </p>
+
+                        <a href='@Url.Action("DeletePost","Post",new{ id = item.Id })'><i class="bi bi-trash"></i></a>
+                        <a href='@Url.Action("EditPost","Post",new{ id = item.Id })'><i class="bi bi-pencil-square"></i></a>
+                    <hr>
+                }
+                    </div>
+                </div>
+            </div>
+    </div>
+</section><!-- End Our Team Section -->

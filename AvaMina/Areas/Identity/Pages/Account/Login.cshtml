@@ -1,0 +1,52 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="~/img/03.png" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form id="account" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        @*<label asp-for="Input.Email"> Username or email address </label>*@
+                        <input asp-for="Input.Email" id="form3Example3" class="form-control form-control-lg"
+                               placeholder=" Enter Username Or Email" />
+                    </div>
+                        
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        @*<label asp-for="Input.Password">
+                            Password
+                        </label>*@
+                        <input asp-for="Input.Password" id="form3Example4" class="form-control form-control-lg"
+                               placeholder="Enter Password" />
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

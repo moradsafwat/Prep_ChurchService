@@ -1,0 +1,91 @@
+﻿@model AvaMina.Models.Person
+
+@{
+    ViewData["Title"] = "EditPerson";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Edit Person</strong></h2>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <div class="col-md-6" style="direction:rtl;text-align:right">
+                        <form asp-action="EditPerson">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="control-label">الاسم الاول</label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SecondName" class="control-label">الاسم الثاني</label>
+                                <input asp-for="SecondName" class="form-control" />
+                                <span asp-validation-for="SecondName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ThirdName" class="control-label">الاسم الثالث</label>
+                                <input asp-for="ThirdName" class="form-control" />
+                                <span asp-validation-for="ThirdName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateOfBirth" class="control-label">تاريخ الميلاد</label>
+                                <input asp-for="DateOfBirth" class="form-control" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PhoneNum" class="control-label">تليفون</label>
+                                <input asp-for="PhoneNum" class="form-control" />
+                                <span asp-validation-for="PhoneNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FatherPhoneNum" class="control-label">تليفون الاب</label>
+                                <input asp-for="FatherPhoneNum" class="form-control" />
+                                <span asp-validation-for="FatherPhoneNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MotherPhoneNum" class="control-label">تليفون الام</label>
+                                <input asp-for="MotherPhoneNum" class="form-control" />
+                                <span asp-validation-for="MotherPhoneNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BuildNum" class="control-label">رقم العمارة</label>
+                                <input asp-for="BuildNum" class="form-control" />
+                                <span asp-validation-for="BuildNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StreetName" class="control-label">الشارع</label>
+                                <input asp-for="StreetName" class="form-control" />
+                                <span asp-validation-for="StreetName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FloorNum" class="control-label">الدور</label>
+                                <input asp-for="FloorNum" class="form-control" />
+                                <span asp-validation-for="FloorNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ApartemntNum" class="control-label">الشقة</label>
+                                <input asp-for="ApartemntNum" class="form-control" />
+                                <span asp-validation-for="ApartemntNum" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Notes" class="control-label">ملاحظات</label>
+                                <input asp-for="Notes" class="form-control" />
+                                <span asp-validation-for="Notes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <a asp-controller="People" asp-action="People" class="btn btn-outline-success">Back to List</a>
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

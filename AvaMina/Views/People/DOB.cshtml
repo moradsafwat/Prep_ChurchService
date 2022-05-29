@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AvaMina.Models.Person>
+
+@{
+    ViewData["Title"] = "DOB";
+    int i = 1;
+}
+
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Date of birth </strong></h2>
+        </div>
+        <div data-aos="fade-up" class="m-3" style="direction:rtl;text-align:right">
+            <form class="" asp-controller="People" asp-action="DOB" method="get">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="form-control" name="month">
+                            <option value="">شهر</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <input name="name" class="form-control text-right" placeholder="أبحث بأسم المخدوم" />
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-success">بحث</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item">
+                    <table class="table table-striped text-center" style="direction:rtl">
+                        <thead>
+                            <tr>
+                                <th>
+                                    رقم
+                                </th>
+                                <th>
+                                    الأسم
+                                </th>
+                                <th>
+                                    تاريخ الميلاد
+                                </th>
+                                @*<th>
+                                    Action
+                                </th>*@
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(i++)
+                                        </td>
+                                        <td>
+                                            <a href='@Url.Action("DetailsPerson","People",new{ id = item.Id })'>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                                @Html.DisplayFor(modelItem => item.SecondName)
+                                            </a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                        </td>
+                                        @*<td>
+                                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MenuExampleDefault" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+                                                <span>
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </span>
+                                            </button>
+                                            <div class="collapse navbar-collapse" id="MenuExampleDefault">
+                                                <a href='@Url.Action("EditPerson","People",new{ id = item.Id })'><i class="bi bi-pencil-square"></i></a>
+                                                <a href='@Url.Action("RemovePerson","People",new{ id = item.Id })'><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </td>*@
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

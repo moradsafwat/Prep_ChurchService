@@ -1,0 +1,109 @@
+﻿@using AvaMina.ViewModels
+@model EventPeopleViewModel
+
+@{
+    ViewData["Title"] = "Event Attendance";
+}
+
+
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Check box Attendance</strong></h2>
+        </div>
+        <div class="m-3" data-aos="fade-up">
+            <a asp-controller="Event" asp-action="CreateEvent" class="btn btn-outline-success">Create New Event</a>
+        </div>
+            <div data-aos="fade-up" style="direction:rtl;text-align:right">
+                <form asp-controller="Event" asp-action="EventAttendance" method="get">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" name="selectedEventId">
+                                @foreach (var e in Model.Events)
+                                {
+                                    <option value='@e.Id'>
+                                        @e.Date.ToLongDateString() @e.Type
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Search" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item">
+                    @if (Model.personEventAttendances != null && Model.personEventAttendances.Any())
+                    {
+                        @using (Html.BeginForm("EventAttendance", "Event", FormMethod.Post))
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    @Model.selectedEvent.Date.ToLongDateString()
+                                    @Model.selectedEvent.Type
+
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-right">
+                                        @Model.selectedEvent.Type
+                                        <span class="text-left">
+                                            <a href='@Url.Action("EditEvent","Event",new{ id = @Model.selectedEvent.Id })'><i class="bi bi-pencil-square"></i></a>
+                                            <a href='@Url.Action("DeleteEvent","Event",new{ id = @Model.selectedEvent.Id })'><i class="bi bi-trash"></i></a>
+                                        </span>
+                                    </h5>
+
+                                    <div class="card-text">
+                                        @Html.HiddenFor(m => m.selectedEvent.Id)
+                                        <table class="table table-striped text-center" style="direction:rtl">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">
+                                                        الرقم
+                                                    </th>
+                                                    <th scope="col">
+                                                        الاسم
+                                                    </th>
+                                                    <th scope="col">
+                                                        الحضور
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @for (int i = 0; i < Model.personEventAttendances.Count; i++)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @(i + 1)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(m => m.personEventAttendances[i].Person.FirstName)
+                                                            @Html.DisplayFor(m => m.personEventAttendances[i].Person.SecondName)
+                                                        </td>
+                                                        <td>
+                                                            @Html.HiddenFor(m => m.personEventAttendances[i].Person.Id)
+                                                            @Html.HiddenFor(m => m.personEventAttendances[i].previousIsAttendent)
+                                                            @Html.CheckBoxFor(m => m.personEventAttendances[i].currentIsAttendent)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer mt-2">
+                                        <input type="submit" class="btn btn-primary" value="Save" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AvaMina.Models.Person>
+
+@{
+    ViewData["Title"] = "People";
+    int i = 1;
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Preparatory </strong> Boys</h2>
+            <p>
+                "If anyone serves me, let him follow me, and where I am, there also my servant will be. And if anyone serves me, the Father will honor him."
+            </p>
+            <p>( John 12:26 )</p>
+        </div>
+        <div class="m-3" data-aos="fade-up">
+            <a asp-controller="People" asp-action="CreatePerson" class="btn btn-outline-success">New Person</a>
+        </div>
+        <div data-aos="fade-up">
+            <form asp-controller="People" asp-action="People" method="get">
+                <div class="row m-3" style="direction:rtl">
+                    <div class="col-md-6">
+                        <input name="name" class="form-control text-right" placeholder="أبحث بأسم المخدوم" />
+                    </div>
+                    <div class="m-2 col-md-4">
+                        <button type="submit" class="btn btn-success">بحث</button>
+                    </div>
+                </div>
+            </form>       
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item">
+                    <table class="table table-striped text-center" style="direction:rtl">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    الرقم
+                                </th>
+                                <th scope="col">
+                                    الاسم
+                                </th>
+                                <th scope="col">
+                                    العنوان
+                                </th>
+                                <th scope="col">
+                                    تليفون
+                                </th>
+                                <th scope="col">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="font-weight-bold">
+                                        @(i++)
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("DetailsPerson","People",new{ id = item.Id })'>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                            @Html.DisplayFor(modelItem => item.SecondName)
+                                            @*@Html.DisplayFor(modelItem => item.ThirdName)*@
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BuildNum) ش
+                                        @Html.DisplayFor(modelItem => item.StreetName) دور
+                                        @Html.DisplayFor(modelItem => item.FloorNum) شقة
+                                        @Html.DisplayFor(modelItem => item.ApartemntNum)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNum)
+                                    </td>
+                                    <td>
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MenuExampleDefault" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+                                            <span>
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </span>
+                                        </button>
+                                        <div class="collapse navbar-collapse" id="MenuExampleDefault">
+                                            <a href='@Url.Action("EditPerson","People",new{ id = item.Id })'><i class="bi bi-pencil-square"></i></a>
+                                            <a href='@Url.Action("RemovePerson","People",new{ id = item.Id })'><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <hr />
+                    <h1 class="text-center"><span class="badge badge-secondary">@ViewBag.CountPeople</span> عدد المخدومين </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->
+
+
+

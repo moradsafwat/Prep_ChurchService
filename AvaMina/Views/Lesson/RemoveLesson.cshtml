@@ -1,0 +1,60 @@
+﻿@model AvaMina.Models.Lesson
+
+@{
+    ViewData["Title"] = "RemoveLesson";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Remove Lesson</strong></h2>
+            <h3>Are you sure you want to delete this Lesson ?</h3>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <div class="card" style="direction:rtl;text-align:right">
+                        <h3 class="card-header text-center">
+                            @Html.DisplayFor(model => model.Name)
+                        </h3>
+                        <div class="card-body">
+                            <h4 class="card-title"> تاريخ الدرس </h4>
+                            <p class="card-text fs-4">
+                                @Html.DisplayFor(model => model.Date)
+                            </p>
+                            <h4 class="card-title"> أسم الدرس </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Name)</p>
+
+                            <h4 class="card-title"> الهدف </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Target)</p>
+
+                            <h4 class="card-title"> العناصر </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Elements)</p>
+
+                            <h4 class="card-title"> الاية </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Verse)</p>
+
+                            <h4 class="card-title"> المرجع </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.reference)</p>
+
+                            <h4 class="card-title"> التدريب 1 </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.training1)</p>
+
+                            <h4 class="card-title"> التدريب 2 </h4>
+                            <p class="card-text fs-4">@Html.DisplayFor(model => model.training2)</p>
+                        </div>
+                    </div>
+                    <div class="card-footer mt-2">
+                        <form asp-controller="Lesson" asp-action="RemoveLesson" method="post">
+                            <a asp-controller="Lesson" asp-action="Lessons" class="btn btn-outline-info">Back to List</a>
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+</section><!-- End Our Team Section -->
