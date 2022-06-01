@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using AvaMina.Services;
 
 namespace AvaMina.Controllers
 {
@@ -15,30 +16,30 @@ namespace AvaMina.Controllers
     public class PeopleController : Controller
     {
         private readonly ILogger<PostController> _logger;
-        private readonly IPersonRepository _person;
-        public PeopleController(IPersonRepository person,
-            ILogger<PostController> logger )
+        private readonly IPeopleService _peopleService;
+
+        public PeopleController(ILogger<PostController> logger, IPeopleService peopleService)
         {
-            _person = person;
             _logger = logger;
+            _peopleService = peopleService;
         }
+
         // GET: PersonController
         public ActionResult People(string name)
         {
-            ViewBag.CountPeople = _person.CountPeople();
-            var people = _person.List();
+            ViewBag.CountPeople = _peopleService.CountPeople();
+            var people = _peopleService.GetAll();
             
             if (string.IsNullOrWhiteSpace(name))
                 return View(people);
-            var PeopleGet = _person.GetPeopleWithName(name);
+            var PeopleGet = _peopleService.GetPeopleByname(name);
                 return View(PeopleGet);
         }
 
         // GET: PersonController/Details/5
         public ActionResult DetailsPerson(int id)
         {
-            var person = _person.Find(id);
-            return View(person);
+            return View(_peopleService.GetById(id));
         }
 
         // GET: PersonController/Create
@@ -54,15 +55,14 @@ namespace AvaMina.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
-            _person.Add(person);
+            _peopleService.Add(person);
             return RedirectToAction("People", "People");
         }
 
         // GET: PersonController/Edit/5
         public ActionResult EditPerson(int id)
         {
-            var person = _person.Find(id);
-            return View(person);
+            return View(_peopleService.GetById(id));
         }
 
         // POST: PersonController/Edit/5
@@ -70,15 +70,14 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPerson(int id, Person person)
         {
-            _person.Update(id, person);
+            _peopleService.Update(id, person);
             return RedirectToAction("people", "people");
         }
 
         // GET: PersonController/Delete/5
         public ActionResult RemovePerson(int id)
         {
-            var person = _person.Find(id);
-            return View(person);
+            return View(_peopleService.GetById(id));
         }
 
         // POST: PersonController/Delete/5
@@ -86,7 +85,7 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemovePerson(Person person)
         {
-            _person.Remove(person);
+            _peopleService.Delete(person);
             return RedirectToAction("People","People");
         }
 
@@ -95,11 +94,11 @@ namespace AvaMina.Controllers
             //var list = _person.GetPersonEventAttendanceByEventIdAndPersonArea("3", 1);
             //var list = _event.GetEventAttendancesByPersonArea();
 
-            var people = _person.List();
+            var people = _peopleService.GetAll();
             if (month == null && string.IsNullOrWhiteSpace(name))
                 return View(people);
             //var birthPeople = _person.GetPeopleThatHasBirthDayInMonth(month.Value);
-            var birthPeople = _person.GetPeopleWithNameAndMonth(name, month);
+            var birthPeople = _peopleService.GetPeopleWithNameAndMonth(name, month);
             return View(birthPeople);
         }
 

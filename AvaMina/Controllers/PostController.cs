@@ -5,6 +5,7 @@ using AvaMina.Repositories;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using AvaMina.Services;
 
 namespace AvaMina.Controllers
 {
@@ -12,12 +13,12 @@ namespace AvaMina.Controllers
     public class PostController : Controller
     {
         private readonly ILogger<PostController> _logger;
-        private readonly IPostRepository _post;
+        private readonly IPostsService _postsService;
 
         public PostController(ILogger<PostController> logger,
-            IPostRepository post)
+            IPostsService postsService)
         {
-            _post = post;
+            _postsService = postsService;
             _logger = logger;
             
         }
@@ -25,15 +26,15 @@ namespace AvaMina.Controllers
         // GET: PostController
         public ActionResult Posts()
         {
-            var posts = _post.List().OrderByDescending(x => x.CreateDate);
-            return View(posts);
+            return View(_postsService.GetAll());
         }
 
         // GET: PostController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //public ActionResult Details(int id)
+        //{
+        //   var post = _postsService.GetById(id);
+        //    return View(post);
+        //}
 
         // GET: PostController/Create
         public ActionResult CreatePost()
@@ -47,7 +48,7 @@ namespace AvaMina.Controllers
         public ActionResult CreatePost(Post newPost)
         {
             newPost.CreateDate = DateTime.Now;
-            _post.Add(newPost);
+            _postsService.Add(newPost);
             return RedirectToAction("Posts", "Post");
 
         }
@@ -55,8 +56,7 @@ namespace AvaMina.Controllers
         // GET: PostController/Edit/5
         public ActionResult EditPost(int id)
         {
-            var post = _post.Find(id);
-            return View(post);
+            return View(_postsService.GetById(id));
         }
 
         // POST: PostController/Edit/5
@@ -65,15 +65,14 @@ namespace AvaMina.Controllers
         public ActionResult EditPost(int id, Post post)
         {
             post.CreateDate = DateTime.Now;
-            _post.Update(id, post);
+            _postsService.Update(id, post);
             return RedirectToAction("Posts", "Post");
         }
 
         // GET: PostController/Delete/5
         public ActionResult DeletePost(int id)
         {
-            var post = _post.Find(id);
-            return View(post);
+            return View(_postsService.GetById(id));
         }
 
         // POST: PostController/Delete/5
@@ -81,7 +80,7 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id, Post post)
         {
-            _post.Remove(post);
+            _postsService.Delete(post);
             return RedirectToAction("Posts", "Post");
         }
     }

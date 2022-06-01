@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using AvaMina.Services;
 
 namespace AvaMina.Controllers
 {
@@ -15,24 +16,24 @@ namespace AvaMina.Controllers
     public class LessonController : Controller
     {
         private readonly ILogger<LessonController> _logger;
-        private readonly ILessonRepository _lesson;
-        public LessonController(ILogger<LessonController> logger, ILessonRepository lesson)
+        private readonly ILessonsService _lessonsService;
+
+        public LessonController(ILogger<LessonController> logger, ILessonsService lessonsService)
         {
-            _lesson = lesson;
             _logger = logger;
+            _lessonsService = lessonsService;
         }
+
         // GET: LessonController
         public ActionResult Lessons()
         {
-            var lessons = _lesson.List().OrderBy(d =>d.Date);
-            return View(lessons);
+            return View(_lessonsService.GetAll());
         }
 
         // GET: LessonController/Details/5
         public ActionResult DetailsLesson(int id)
         {
-            var lesson = _lesson.Find(id);
-            return View(lesson);
+            return View(_lessonsService.GetById(id));
         }
 
         // GET: LessonController/Create
@@ -46,15 +47,14 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateLesson(Lesson  lesson)
         {
-            _lesson.Add(lesson);
+            _lessonsService.Add(lesson);
             return RedirectToAction("Lessons", "Lesson");
         }
 
         // GET: LessonController/Edit/5
         public ActionResult EditLesson(int id)
         {
-            var lesson = _lesson.Find(id);
-            return View(lesson);
+            return View(_lessonsService.GetById(id));
         }
 
         // POST: LessonController/Edit/5
@@ -62,15 +62,14 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditLesson(int id, Lesson lesson)
         {
-            _lesson.Update(id, lesson);
+            _lessonsService.Update(id, lesson);
             return RedirectToAction("Lessons", "Lesson");
         }
 
         // GET: LessonController/Delete/5
         public ActionResult RemoveLesson(int id)
         {
-            var lesson = _lesson.Find(id);
-            return View(lesson);
+            return View(_lessonsService.GetById(id));
         }
 
         // POST: LessonController/Delete/5
@@ -78,7 +77,7 @@ namespace AvaMina.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemoveLesson(Lesson lesson)
         {
-            _lesson.Remove(lesson);
+            _lessonsService.Delete(lesson);
             return RedirectToAction("Lessons", "Lesson");
         }
     }

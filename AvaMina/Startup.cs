@@ -1,6 +1,7 @@
 using AvaMina.Data;
 using AvaMina.Models;
 using AvaMina.Repositories;
+using AvaMina.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,10 @@ namespace AvaMina
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPostsService, PostsService>();
+            services.AddScoped<IPeopleService, PeopleService>();
+            services.AddScoped<ILessonsService, LessonsService>();
+
             services.AddScoped<IServantRepository, ServantRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
