@@ -22,29 +22,32 @@
                         </h3>
                         <div class="card-body">
                             <h4 class="card-title">العنوان </h4>
-                            <p class="card-text fs-4">
+                            <p class="card-text details-text fs-4">
                                 @Html.DisplayFor(model => model.BuildNum) شارع
                                 @Html.DisplayFor(model => model.StreetName) الدور
                                 @Html.DisplayFor(model => model.FloorNum) شقة
                                 @Html.DisplayFor(model => model.ApartemntNum)
                             </p>
                             <h4 class="card-title"> تليفون </h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.PhoneNum)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.PhoneNum)</p>
 
                             <h4 class="card-title"> تليفون الاب </h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.FatherPhoneNum)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.FatherPhoneNum)</p>
 
                             <h4 class="card-title"> تليفون الام </h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.MotherPhoneNum)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.MotherPhoneNum)</p>
 
                             <h4 class="card-title"> تاريخ الميلاد </h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.DateOfBirth)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.DateOfBirth)</p>
+
+                            <h4 class="card-title"> المدرسة </h4>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.School)</p>
 
                             <h4 class="card-title">ملاحظات</h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Notes)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.Notes)</p>
 
                             <h4 class="card-title"> منطقة </h4>
-                            <p class="card-text fs-4">@Html.DisplayFor(model => model.Area)</p>
+                            <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.Area)</p>
                         </div>
                         <div class="card-footer mt-2">
                             <form asp-controller="People" asp-action="RemovePerson" method="post">

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AvaMina.ViewModels;
 
 namespace AvaMina.Data
 {
@@ -32,5 +33,7 @@ namespace AvaMina.Data
         public DbSet<Servant> Servants { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Report> Reports { get; set; }
+        public DbSet<AvaMina.ViewModels.PersonReportViewModel> PersonReportViewModel { get; set; }
     }
 }

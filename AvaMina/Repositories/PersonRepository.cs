@@ -46,5 +46,7 @@ namespace AvaMina.Repositories
         {
             return db.People.ToList();
         }
+
+        
     }
 }

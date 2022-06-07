@@ -22,11 +22,11 @@
                         </h3>
                         <div class="card-body">
                             <h4 class="card-title">نوع الاجتماع </h4>
-                            <p class="card-text fs-4">
+                            <p class="card-text details-text fs-4">
                                 @Model.Type
                             </p>
                             <h4 class="card-title">التاريخ </h4>
-                            <p class="card-text fs-4">@Model.Date</p>
+                            <p class="card-text details-text fs-4">@Model.Date</p>
                         </div>
                         <div class="card-footer mt-2">
                             <form asp-controller="Event" asp-action="DeleteEvent" method="post">

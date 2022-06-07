@@ -70,7 +70,9 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 /* Custom style*/
-
+.details-text{
+    margin-right: 50px;
+}
 .Profile_Pic{
     width:290px;
     height:290px;

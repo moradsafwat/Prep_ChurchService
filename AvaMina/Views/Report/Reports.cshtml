@@ -1,0 +1,94 @@
+﻿@model IEnumerable<AvaMina.ViewModels.PersonReportViewModel>;
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Reports </strong></h2>
+        </div>
+        @*<div class="m-3" data-aos="fade-up">
+            <a href='@Url.Action("EditReport", "Report", new { id = Model.Id })' class="btn btn-primary text-right">Edit Report</a>
+            <a asp-controller="Report" asp-action="CreateReport" class="btn btn-outline-success">New Report</a>
+        </div>*@
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    @if (Model != null)
+                    {
+                        foreach (var report in Model)
+                        {
+
+                            <div class="card" style="direction:rtl;text-align:right">
+                                <h3 class="card-header text-center">
+                                    @report.FirstName
+                                    @report.SecondName
+                                    @*<span class="badge badge-pill badge-secondary text-left" style="font-size:40%;">@report.CreatedOn</span>*@
+                                </h3>
+                                <h3 class="card-header">
+                                    <span class="text-left">
+                                        <a href='@Url.Action("EditReport", "Report", new { id = @report.Id })'><i class="bi bi-pencil-square"></i></a>
+                                        <a href='@Url.Action("DeleteReport", "Report", new { id = @report.Id })'><i class="bi bi-trash"></i></a>
+                                    </span>
+                                    @report.Name
+                                    <span class="badge badge-pill badge-secondary text-left" style="font-size:40%;">@report.CreatedOn</span>
+                                </h3>
+                                <div class="card-body">
+                                    <h3 class="card-title">وظيفة الاب</h3>
+                                    <p class="card-text details-text fs-4">
+                                        @report.FatherJob
+                                    </p>
+                                    <h3 class="card-title"> وظيفة الام </h3>
+                                    <p class="card-text details-text fs-4">@report.MotherJob</p>
+
+                                    <h3 class="card-title"> الحالة المادية </h3>
+                                    <p class="card-text details-text fs-4">@report.FinancialLevel</p>
+
+                                    <h3 class="card-title"> أب الاعتراف </h3>
+                                    <p class="card-text details-text fs-4">@report.FatherOfConfession</p>
+
+                                    <h3 class="card-title"> شماس </h3>
+                                    @if (@report.Deacon)
+                                    {
+                                        <p class="card-text details-text fs-4">نعم</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="card-text details-text fs-4">لا</p>
+                                    }
+                                    <h4 class="card-title">عدد الاخوات </h4>
+                                    <p class="card-text details-text fs-4">@report.NumberOfBrothers</p>
+
+                                    <h4 class="card-title">الحضور</h4>
+                                    <p class="card-text details-text fs-4">@report.Attendance</p>
+
+                                    <h4 class="card-title">الهوايات </h4>
+                                    <p class="card-text details-text fs-4">@report.Hobbies</p>
+
+                                    <h4 class="card-title"> تقرير الخادم </h4>
+                                    <p class="card-text details-text fs-4">@report.Reports</p>
+                                </div>
+                                <div class="card-footer mt-2">
+                                    <a asp-controller="People" asp-action="People" class="btn btn-outline-success text-right">Back to List</a>
+                                    <a href='@Url.Action("EditReport", "Report", new { id = report.Id })' class="btn btn-primary text-right">Edit Report</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            <p class="text-center">
+                                ... No reports added yet
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Our Team Section -->

@@ -29,11 +29,11 @@
                         <button type="submit" class="btn btn-success">بحث</button>
                     </div>
                 </div>
-            </form>       
+            </form>
         </div>
         <div class="row">
             <div class="member" data-aos="fade-up">
-                <div class="item">
+                <div class="item col-md-12">
                     <table class="table table-striped text-center" style="direction:rtl">
                         <thead>
                             <tr>
@@ -58,7 +58,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="font-weight-bold">
+                                    <td class="font-weight-bold text-center">
                                         @(i++)
                                     </td>
                                     <td>
@@ -86,6 +86,7 @@
                                         <div class="collapse navbar-collapse" id="MenuExampleDefault">
                                             <a href='@Url.Action("EditPerson","People",new{ id = item.Id })'><i class="bi bi-pencil-square"></i></a>
                                             <a href='@Url.Action("RemovePerson","People",new{ id = item.Id })'><i class="bi bi-trash"></i></a>
+                                            <a href='@Url.Action("Reports","Report",new{ id = item.Id })'>@*<i class="bi bi-trash"></i>*@Report</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,6 +100,3 @@
         </div>
     </div>
 </section><!-- End Our Team Section -->
-
-
-

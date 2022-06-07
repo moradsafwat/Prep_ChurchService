@@ -4,14 +4,16 @@ using AvaMina.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AvaMina.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220602142619_AddSchoolCol.ToPerson")]
+    partial class AddSchoolColToPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,56 +227,6 @@ namespace AvaMina.Data.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("AvaMina.Models.Report", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Attendance")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Deacon")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FatherJob")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FatherOfConfession")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FinancialLevel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Hobbies")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MotherJob")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumberOfBrothers")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reports")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("Reports");
-                });
-
             modelBuilder.Entity("AvaMina.Models.Servant", b =>
                 {
                     b.Property<int>("Id")
@@ -445,17 +397,6 @@ namespace AvaMina.Data.Migrations
                     b.ToTable("UserTokens", "Security");
                 });
 
-            modelBuilder.Entity("AvaMina.Models.Report", b =>
-                {
-                    b.HasOne("AvaMina.Models.Person", "Person")
-                        .WithMany("Reports")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
-                });
-
             modelBuilder.Entity("EventPerson", b =>
                 {
                     b.HasOne("AvaMina.Models.Event", null)
@@ -520,11 +461,6 @@ namespace AvaMina.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("AvaMina.Models.Person", b =>
-                {
-                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

@@ -82,6 +82,9 @@ namespace AvaMina.Controllers
                         previousIsAttendent = x.Events.Any()
                     }).ToList();
                 vm.selectedEvent = vm.Events.FirstOrDefault(x => x.Id == selectedEventId);
+
+                ViewBag.Current = vm.personEventAttendances.Count(c => c.currentIsAttendent);
+                ViewBag.Previous = vm.personEventAttendances.Count(c => !c.previousIsAttendent);
             }
             return View(vm);
         }

@@ -1,0 +1,83 @@
+﻿@model AvaMina.Models.Report
+
+@{
+    ViewData["Title"] = "CreateReport";
+}
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="title-page text-white text-center mt-4" data-aos="fade-up">
+            <h2><strong>Create Report</strong></h2>
+        </div>
+        <div class="row">
+            <div class="member" data-aos="fade-up">
+                <div class="item" style="direction:rtl">
+                    <div class="col-md-6" style="direction:rtl;text-align:right">
+                        <form asp-controller="Report" asp-action="CreateReport" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label">اسم التقرير</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FatherJob" class="control-label">وظيفة الأب</label>
+                                <input asp-for="FatherJob" class="form-control" />
+                                <span asp-validation-for="FatherJob" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MotherJob" class="control-label">وظيفة الأم</label>
+                                <input asp-for="MotherJob" class="form-control" />
+                                <span asp-validation-for="MotherJob" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FinancialLevel" class="control-label">الحالة المادية</label>
+                                <input asp-for="FinancialLevel" class="form-control" />
+                                <span asp-validation-for="FinancialLevel" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FatherOfConfession" class="control-label">أب الاعتراف</label>
+                                <input asp-for="FatherOfConfession" class="form-control" />
+                                <span asp-validation-for="FatherOfConfession" class="text-danger"></span>
+                            </div>
+                            <label asp-for="Deacon" class="control-label">شماس ؟</label>
+                            <select class="form-select" asp-for="Deacon">
+                                <option value='false'>لا </option>
+                                <option value='true'> نعم </option>
+                            </select>
+                            <div class="form-group">
+                                <label asp-for="NumberOfBrothers" class="control-label">عدد الأخوات</label>
+                                <input asp-for="NumberOfBrothers" class="form-control" />
+                                <span asp-validation-for="NumberOfBrothers" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Attendance" class="control-label">الحضور </label>
+                                <input asp-for="Attendance" class="form-control" />
+                                <span asp-validation-for="Attendance" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Hobbies" class="control-label">الهوايات و الانشطة</label>
+                                <input asp-for="Hobbies" class="form-control" />
+                                <span asp-validation-for="Hobbies" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Reports" class="control-label">التقرير</label>
+                                <textarea asp-for="Reports" class="form-control" rows="7"></textarea>
+                                <span asp-validation-for="Reports" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <a asp-controller="People" asp-action="People" class="btn btn-outline-success">Back to List</a>
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

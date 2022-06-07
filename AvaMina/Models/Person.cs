@@ -28,8 +28,11 @@ namespace AvaMina.Models
         public string FloorNum { get; set; }
         public string ApartemntNum { get; set; }
         public string StreetName { get; set; }
+        public string School { get; set; }
         public string Area { get; set; }
         public string Notes { get; set; }
         public ICollection<Event> Events { get; set; }
+        public ICollection<Report> Reports { get; set; }
+
     }
 }

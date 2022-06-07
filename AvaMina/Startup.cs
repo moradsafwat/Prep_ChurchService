@@ -33,11 +33,13 @@ namespace AvaMina
             services.AddScoped<IPostsService, PostsService>();
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<ILessonsService, LessonsService>();
+            services.AddScoped<IReportsService, ReportsService>();
 
             services.AddScoped<IServantRepository, ServantRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<ILessonRepository, LessonRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options =>

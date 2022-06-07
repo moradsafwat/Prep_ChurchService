@@ -15,6 +15,8 @@ namespace AvaMina.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private List<string> _allowedExtension = new List<string> { "jpg", "png", "jpeg" };
+        private long _maxProfilePicSize = 262144;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
@@ -123,6 +125,16 @@ namespace AvaMina.Areas.Identity.Pages.Account.Manage
                 var file = Request.Form.Files.FirstOrDefault();
 
                 //check file size and extension
+                //if (!_allowedExtension.Contains(Path.GetExtension(file.FileName).ToLower()))
+                //{
+                //    StatusMessage = "Sorry .. Only.jpg and .png are allowed !! ";
+                //    return RedirectToPage();
+                //}
+                if (file.Length > _maxProfilePicSize)
+                {
+                    StatusMessage = "Sorry .. Allowed Size Profile Picture Is 0.25MB !! ";
+                    return RedirectToPage();
+                }
 
                 using (var dataStream = new MemoryStream())
                 {

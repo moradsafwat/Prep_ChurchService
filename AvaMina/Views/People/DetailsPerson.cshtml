@@ -15,37 +15,44 @@
             <div class="member" data-aos="fade-up">
                 <div class="item" style="direction:rtl">
                     <div class="card" style="direction:rtl;text-align:right">
-                            <h3 class="card-header">
+                            <h3 class="card-header text-center">
                                 @Html.DisplayFor(model => model.FirstName)
                                 @Html.DisplayFor(model => model.SecondName)
                                 @Html.DisplayFor(model => model.ThirdName)
                             </h3>
                             <div class="card-body">
                                 <h4 class="card-title">العنوان </h4>
-                                <p class="card-text fs-4">
+                                <p class="card-text details-text fs-4">
                                     @Html.DisplayFor(model => model.BuildNum) شارع
                                     @Html.DisplayFor(model => model.StreetName) الدور
                                     @Html.DisplayFor(model => model.FloorNum) شقة
                                     @Html.DisplayFor(model => model.ApartemntNum)
                                 </p>
                                 <h4 class="card-title"> تليفون </h4>
-                                <p class="card-text fs-4">@Html.DisplayFor(model => model.PhoneNum)</p>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.PhoneNum)</p>
 
                                 <h4 class="card-title"> تليفون الاب </h4>
-                                <p class="card-text fs-4">@Html.DisplayFor(model => model.FatherPhoneNum)</p>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.FatherPhoneNum)</p>
 
                                 <h4 class="card-title"> تليفون الام </h4>
-                                <p class="card-text fs-4">@Html.DisplayFor(model => model.MotherPhoneNum)</p>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.MotherPhoneNum)</p>
 
                                 <h4 class="card-title"> تاريخ الميلاد </h4>
-                                <p class="card-text fs-4">@Html.DisplayFor(model => model.DateOfBirth)</p>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.DateOfBirth)</p>
+
+                                <h4 class="card-title"> المدرسة </h4>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.School)</p>
 
                                 <h4 class="card-title">ملاحظات</h4>
-                                <p class="card-text fs-4">@Html.DisplayFor(model => model.Notes)</p>
+                                <p class="card-text details-text fs-4">@Html.DisplayFor(model => model.Notes)</p>
+                            </div>
+                            <div class="text-left">
+                                <a href='@Url.Action("Reports","Report",new{ id = Model.Id })' class="btn btn-outline-success m-2 ">View Report</a>
+                                <a href='@Url.Action("CreateReport","Report",new{ id = Model.Id })' class="btn btn-outline-success m-2 ">Add Report</a>
                             </div>
                             <div class="card-footer mt-2">
                                 <a asp-controller="People" asp-action="People" class="btn btn-outline-success text-right">Back to List</a>
-                                <a href='@Url.Action("EditPerson","People",new{ id = Model.Id })' class="btn btn-primary text-right">Edit</i></a>
+                                <a href='@Url.Action("EditPerson","People",new{ id = Model.Id })' class="btn btn-primary text-right">Edit</a>
 
                             </div>
                         </div>
